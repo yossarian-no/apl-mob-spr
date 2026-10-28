@@ -191,12 +191,7 @@ match /users/{userId}/{document=**} {
 Projekt został wykonany jednoosobowo.
  
 ### 5.2. Czytelny i przyjazny interfejs (1 pkt)
-- interfejs zgodny z **Material Design 3**: karty, dolny pasek nawigacji, przycisk FAB „Dodaj posiłek”, chipy, przyciski segmentowe,
-- **motyw jasny i ciemny** (systemowy lub wybrany ręcznie) we własnej, zielono-pomarańczowej kolorystyce nawiązującej do ikony,
-- wszystkie teksty i komunikaty błędów po polsku,
-- najważniejsza informacja (ile kalorii zostało) widoczna od razu na ekranie dziennika,
-- obsługa pustych stanów (ilustracja pustego talerza, podpowiedzi w wyszukiwarce), wskaźniki ładowania, walidacja formularzy,
-- szybkie skróty: gotowe porcje, domyślny posiłek dobierany do pory dnia, lista ostatnio używanych produktów.
+
 ### 5.3. Własna grafika rastrowa i/lub wektorowa – także jako ikona (1 pkt)
 Wszystkie grafiki zostały zaprojektowane specjalnie dla aplikacji:
 - **ikona aplikacji**: adaptacyjna ikona wektorowa przedstawiająca jabłko w pierścieniu dziennego limitu kalorii (`ic_launcher_foreground.xml`, `ic_launcher_background.xml` z gradientem), wersja monochromatyczna dla ikon tematycznych Androida 13+ (`ic_launcher_monochrome.xml`) oraz wersje rastrowe PNG dla starszych systemów (`mipmap-*dpi`),
