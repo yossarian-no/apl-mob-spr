@@ -277,10 +277,7 @@ Dzięki lokalnej bazie dziennik, statystyki i wyszukiwanie wśród zapisanych pr
 ### 5.11. Uruchomienie na urządzeniu mobilnym (1 pkt)
 Aplikacja została przetestowana i jest prezentowana na fizycznym telefonie z Androidem. Dopiero na nim działają w pełni aparat (skanowanie kodów, zdjęcia) i krokomierz.
  
-_Urządzenie testowe: [model telefonu], Android [wersja]._
- 
-### 5.12. Dodatkowo: logowanie zdarzeń (logi)
-Wybrane operacje są zapisywane w dzienniku systemowym (Logcat, tagi `Kalorik` i `SyncWorker`): dodanie wpisu do dziennika (produkt, porcja, kalorie), zapisanie produktu własnego, przebieg synchronizacji oraz błędy połączenia z Open Food Facts i skanerem. Ułatwia to diagnozowanie problemów podczas testów.
+
  
 ---
  
