@@ -34,7 +34,6 @@ Produkty można dodawać na trzy sposoby:
 3. **tworząc własny produkt** (np. domowe danie) wraz ze **zdjęciem** zrobionym aparatem.
 Dane są przechowywane lokalnie w telefonie, więc aplikacja działa także bez internetu. Po zalogowaniu są synchronizowane z bazą w chmurze, dzięki czemu użytkownik nie traci ich po zmianie telefonu.
  
-> _[Miejsce na zrzut ekranu: animacja startowa i ekran dziennika]_
  
 ---
  
