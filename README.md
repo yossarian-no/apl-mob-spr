@@ -2,8 +2,7 @@
  
 **Przedmiot:** Aplikacje mobilne
 **Temat projektu:** Licznik kalorii – dziennik posiłków na system Android
-**Autor:** _[imię i nazwisko]_, nr indeksu _[…]_
-**Data:** _[…]_
+**Autor:** Vasil Kusmartsev 156202
  
 ---
  
