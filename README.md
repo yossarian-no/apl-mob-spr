@@ -263,48 +263,20 @@ Dzięki lokalnej bazie dziennik, statystyki i wyszukiwanie wśród zapisanych pr
 - z odpowiedzi JSON pobierane są: nazwa (polska, jeśli istnieje), marka, kaloryczność, białko, tłuszcze, węglowodany i miniatura zdjęcia. Gdy energia jest podana tylko w kJ, aplikacja przelicza ją na kcal, a produkty bez kaloryczności są pomijane,
 - zgodnie z zasadami serwisu zapytania mają własny nagłówek `User-Agent`, a ich liczba jest ograniczona: wyszukiwanie dopiero po zatwierdzeniu frazy, wyniki zapisywane lokalnie,
 - obsługa błędów: przy braku połączenia aplikacja pokazuje produkty zapisane w telefonie i komunikat, a przy nieznanym kodzie proponuje dodanie produktu własnego.
-### 5.10. Uwzględnienie aspektów energochłonności (1–2 pkt)
-| Element | Rozwiązanie oszczędzające energię |
-|---|---|
-| Synchronizacja | **WorkManager** zamiast stałego połączenia: zmiany są grupowane (start po 20 s, kolejna zmiana przesuwa start, więc kilka wpisów idzie jednym pakietem), zadanie uruchamia się tylko przy dostępnej sieci (`NetworkType.CONNECTED`), a nieudane próby są ponawiane z wykładniczo rosnącym odstępem |
-| Krokomierz | **sprzętowy licznik kroków**, liczony przez energooszczędny koprocesor ruchu, zamiast ciągłej analizy akcelerometru. Nasłuchiwanie tylko wtedy, gdy ekran dziennika jest na pierwszym planie (`LifecycleResumeEffect`, wyrejestrowanie w `onPause`), a zdarzenia grupowane przez czujnik (`maxReportLatency` = 10 s) |
-| Aparat | włączany wyłącznie na czas skanowania kodu lub robienia zdjęcia (systemowy skaner / aplikacja aparatu), bez stałego podglądu |
-| Sieć | zapytania do Open Food Facts dopiero po zatwierdzeniu wyszukiwania (nie przy każdej wpisanej literze), lokalna pamięć podręczna produktów, najpierw sprawdzanie kodu w lokalnej bazie |
-| Obrazy | biblioteka Coil z pamięcią podręczną, pobierane są małe miniatury zdjęć |
-| Ekran | **ciemny motyw**, który na ekranach OLED zmniejsza pobór prądu |
-| Wątki | operacje na bazie i sieci w korutynach na `Dispatchers.IO`, bez blokowania wątku interfejsu |
+
  
-### 5.11. Uruchomienie na urządzeniu mobilnym (1 pkt)
+### 5.10. Uruchomienie na urządzeniu mobilnym (1 pkt)
 Aplikacja została przetestowana i jest prezentowana na fizycznym telefonie z Androidem. Dopiero na nim działają w pełni aparat (skanowanie kodów, zdjęcia) i krokomierz.
  
 
  
 ---
- 
-## 6. Testowanie
- 
-| Scenariusz | Oczekiwany wynik |
-|---|---|
-| Uruchomienie aplikacji | animacja startowa, potem dziennik (dla gościa ekran z prośbą o logowanie) |
-| Rejestracja i logowanie | konto widoczne w Firebase Console → Authentication |
-| Uzupełnienie profilu | wyliczony dzienny limit kalorii, profil zapisany w Firestore |
-| Wyszukanie produktu (np. „skyr”) | lista produktów z Open Food Facts z kalorycznością |
-| Zeskanowanie kodu z opakowania | otwiera się ekran produktu z wartościami odżywczymi |
-| Nieznany kod | propozycja dodania produktu własnego z wypełnionym kodem |
-| Produkt własny ze zdjęciem | produkt na liście „Moje produkty” ze zdjęciem |
-| Dodanie posiłku | pierścień i paski makroskładników się aktualizują, wpis po chwili widoczny w Firestore |
-| Edycja / usunięcie wpisu | zmiana widoczna w dzienniku i w chmurze |
-| Tryb samolotowy | dziennik i zapisane produkty działają, zmiany wysyłają się po odzyskaniu sieci |
-| Spacer z telefonem | rośnie liczba kroków i limit kalorii |
-| Logowanie na innym urządzeniu | dziennik i profil pobrane z chmury |
-| Obrót ekranu | stan ekranów zachowany, animacja startowa się nie powtarza |
-| Zmiana motywu | cała aplikacja w motywie jasnym lub ciemnym |
- 
-> _[Miejsce na zrzuty ekranu: dziennik, wyszukiwarka, skaner, produkt, produkt własny, statystyki, profil, logowanie, motyw ciemny]_
+
+
  
 ---
  
-## 7. Podsumowanie punktacji
+## 6. Podsumowanie punktacji
  
 | Kryterium | Punkty |
 |---|---|
@@ -318,24 +290,7 @@ Aplikacja została przetestowana i jest prezentowana na fizycznym telefonie z An
 | Zdalna baza danych (Cloud Firestore) | 2 |
 | Lokalna baza danych (SQLite) | 1 |
 | Darmowa usługa zewnętrzna (Open Food Facts) | 2 |
-| Oszczędzanie energii | 1 |
 | Uruchomienie na urządzeniu mobilnym | 1 |
-| **Razem (szacunkowo)** | **14** |
+| **Razem (szacunkowo)** | **13** |
  
 ---
- 
-## 8. Możliwe kierunki rozwoju
-- powiadomienia przypominające o zapisaniu posiłku,
-- zapisywanie zdjęć produktów własnych w chmurze,
-- dziennik wody i wagi z wykresem zmian,
-- propozycje przekąsek dopasowanych do pozostałych kalorii i makroskładników,
-- widżet na ekran główny z liczbą pozostałych kalorii.
----
- 
-## 9. Źródła
-- Dokumentacja Android Developers – Jetpack Compose, Navigation, WorkManager, sensory: https://developer.android.com
-- Firebase – Authentication i Cloud Firestore: https://firebase.google.com/docs
-- Open Food Facts API: https://openfoodfacts.github.io/openfoodfacts-server/api/ (dane na licencji ODbL)
-- Google ML Kit – Code Scanner: https://developers.google.com/ml-kit/vision/barcode-scanning/code-scanner
-- M. D. Mifflin i in., „A new predictive equation for resting energy expenditure in healthy individuals”, *American Journal of Clinical Nutrition*, 1990.
- 
